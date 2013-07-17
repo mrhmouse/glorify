@@ -18,7 +18,7 @@ Allows an object to be easily extended.
       for (property in definitions) {
         descriptor = definitions[property];
         get = descriptor.get, set = descriptor.set, enumerable = descriptor.enumerable;
-        Object.defineProperty(this.instance.prototype, property, {
+        Object.defineProperty(this.instance, property, {
           get: get,
           set: set
         });
@@ -31,7 +31,7 @@ Allows an object to be easily extended.
 
       for (property in definitions) {
         value = definitions[property];
-        Object.defineProperty(this.instance.prototype, property, {
+        Object.defineProperty(this.instance, property, {
           value: value
         });
       }
@@ -57,7 +57,7 @@ Allows an object to be easily extended.
 
 
   Function.prototype.properties = function(definitions) {
-    return Glorify(this).properties(definitions);
+    return Glorify(this.prototype).properties(definitions);
   };
 
   /*
@@ -66,7 +66,7 @@ Allows an object to be easily extended.
 
 
   Function.prototype.readonly = function(definitions) {
-    return Glorify(this).readonly(definitions);
+    return Glorify(this.prototype).readonly(definitions);
   };
 
   module.exports = Glorify;

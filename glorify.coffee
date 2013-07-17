@@ -7,12 +7,12 @@ class GlorifiedInstance
   properties: ( definitions ) ->
     for property, descriptor of definitions
       { get, set, enumerable } = descriptor
-      Object.defineProperty @instance::, property, { get, set }
+      Object.defineProperty @instance, property, { get, set }
     @
 
   readonly: ( definitions ) ->
     for property, value of definitions
-      Object.defineProperty @instance::, property, value: value
+      Object.defineProperty @instance, property, value: value
     @
 
 ###
@@ -25,12 +25,12 @@ Glorify = ( instance ) ->
 Define properties of this class with get and set functions.
 ###
 Function::properties = ( definitions ) ->
-  Glorify( @ ).properties definitions
+  Glorify( @:: ).properties definitions
 
 ###
 Define read-only properties of this class
 ###
 Function::readonly = ( definitions ) ->
-  Glorify( @ ).readonly definitions
+  Glorify( @:: ).readonly definitions
 
 module.exports = Glorify
