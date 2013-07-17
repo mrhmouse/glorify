@@ -21,6 +21,7 @@ Example in CoffeeScript and NodeJS:
       age:
         get: -> Database.getProperty @, 'age'
         set: ( value ) -> Database.setProperty @, 'name', value
+        enumerable: yes
         
     @readonly
       type: 'Foobar'
