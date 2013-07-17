@@ -12,6 +12,11 @@ Allows an object to be easily extended.
       this.instance = instance;
     }
 
+    /*
+    Define properties of this instance with get and set functions.
+    */
+
+
     GlorifiedInstance.prototype.properties = function(definitions) {
       var descriptor, enumerable, get, property, set;
 
@@ -25,6 +30,11 @@ Allows an object to be easily extended.
       }
       return this;
     };
+
+    /*
+    Define read-only properties of this class
+    */
+
 
     GlorifiedInstance.prototype.readonly = function(definitions) {
       var property, value;
@@ -51,19 +61,9 @@ Allows an object to be easily extended.
     return new GlorifiedInstance(instance);
   };
 
-  /*
-  Define properties of this class with get and set functions.
-  */
-
-
   Function.prototype.properties = function(definitions) {
     return Glorify(this.prototype).properties(definitions);
   };
-
-  /*
-  Define read-only properties of this class
-  */
-
 
   Function.prototype.readonly = function(definitions) {
     return Glorify(this.prototype).readonly(definitions);
