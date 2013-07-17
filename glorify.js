@@ -5,7 +5,8 @@ Allows an object to be easily extended.
 
 
 (function() {
-  var GlorifiedInstance, Glorify;
+  var GlorifiedInstance, Glorify,
+    __hasProp = {}.hasOwnProperty;
 
   GlorifiedInstance = (function() {
     function GlorifiedInstance(instance) {
@@ -21,6 +22,7 @@ Allows an object to be easily extended.
       var descriptor, enumerable, get, property, set;
 
       for (property in definitions) {
+        if (!__hasProp.call(definitions, property)) continue;
         descriptor = definitions[property];
         get = descriptor.get, set = descriptor.set, enumerable = descriptor.enumerable;
         Object.defineProperty(this.instance, property, {
@@ -40,6 +42,7 @@ Allows an object to be easily extended.
       var property, value;
 
       for (property in definitions) {
+        if (!__hasProp.call(definitions, property)) continue;
         value = definitions[property];
         Object.defineProperty(this.instance, property, {
           value: value

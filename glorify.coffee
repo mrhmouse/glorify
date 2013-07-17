@@ -8,7 +8,7 @@ class GlorifiedInstance
   Define properties of this instance with get and set functions.
   ###
   properties: ( definitions ) ->
-    for property, descriptor of definitions
+    for own property, descriptor of definitions
       { get, set, enumerable } = descriptor
       Object.defineProperty @instance, property, { get, set }
     @
@@ -17,7 +17,7 @@ class GlorifiedInstance
   Define read-only properties of this class
   ###
   readonly: ( definitions ) ->
-    for property, value of definitions
+    for own property, value of definitions
       Object.defineProperty @instance, property, value: value
     @
 
