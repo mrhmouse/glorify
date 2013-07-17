@@ -1,7 +1,7 @@
-Glorify.js: Glorify your classes!
+Glorify your classes!
 =================================
 
-Glorify.js allows you to quickly and easily define properties
+Glorify allows you to quickly and easily define properties
 on your objects or within your constructor functions using getters,
 setters, and other descriptors.
 
@@ -45,7 +45,7 @@ Example in CoffeeScript and NodeJS:
 Usage
 =====
 
-Glorify.js can be used either directly on a constructor function or as a static call on an arbitrary object.
+Glorify can be used either directly on a constructor function or as a static call on an arbitrary object.
 
 _Note: All examples below are in CoffeeScript._
 
