@@ -15,9 +15,24 @@ class GlorifiedInstance
       Object.defineProperty @instance, property, value: value
     @
 
+  # Easily add common property patterns
+  @add: ( descriptors ) ->
+    for own name, setup of descriptors
+      GlorifiedInstance::[name] = ( definitions ) ->
+        for own property, value of definitions
+          descriptor = setup property
+          Object.defineProperty @instance,
+            property,
+            descriptor
+          @instance[property] = value
+        @
+
 # Ease of use function for creating a new glorified instance.
 Glorify = ( instance ) ->
   new GlorifiedInstance instance
+
+Glorify.add = ( descriptors ) ->
+  GlorifiedInstance.add descriptors
 
 # Export these to the Function prototype
 Function::properties = ( definitions ) ->

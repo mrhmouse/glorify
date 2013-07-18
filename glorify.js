@@ -36,12 +36,39 @@
       return this;
     };
 
+    GlorifiedInstance.add = function(descriptors) {
+      var name, setup, _results;
+
+      _results = [];
+      for (name in descriptors) {
+        if (!__hasProp.call(descriptors, name)) continue;
+        setup = descriptors[name];
+        _results.push(GlorifiedInstance.prototype[name] = function(definitions) {
+          var descriptor, property, value;
+
+          for (property in definitions) {
+            if (!__hasProp.call(definitions, property)) continue;
+            value = definitions[property];
+            descriptor = setup(property);
+            Object.defineProperty(this.instance, property, descriptor);
+            this.instance[property] = value;
+          }
+          return this;
+        });
+      }
+      return _results;
+    };
+
     return GlorifiedInstance;
 
   })();
 
   Glorify = function(instance) {
     return new GlorifiedInstance(instance);
+  };
+
+  Glorify.add = function(descriptors) {
+    return GlorifiedInstance.add(descriptors);
   };
 
   Function.prototype.properties = function(definitions) {
