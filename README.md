@@ -97,6 +97,8 @@ foo = do ->
       get: -> name.toUpperCase()
   .readonly
     createdOn: createdOn
+
+  foo
 ```
 
 Creating your own descriptors
