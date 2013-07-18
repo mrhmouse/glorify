@@ -99,10 +99,51 @@ foo = do ->
     createdOn: createdOn
 ```
 
+Creating your own descriptors
+-----------------------------
+
+```coffeescript
+Glorify = require 'glorify'
+
+# For demonstration purposes, this is our database
+DATABASE = {}
+
+Glorify.add
+  database: ( property ) ->
+    entry = ( item ) -> DATABASE[item.guid]
+    enumerable: yes
+    get: -> entry( @ )[property]
+    set: ( value ) -> entry( @ )[property] = value
+  
+class Person
+  constructor: ( name, age ) ->
+    # Set up a fake GUID (just using a timestamp)
+    guid = Date.now()
+    DATABASE[guid] = {}
+    
+    # Glorify our person
+    Glorify( @ )
+    .readonly
+      guid: guid
+    .database
+      name: name
+      age: age
+      
+bob = new Person 'Bob', 32
+```
+
 Reference
 =========
 
-All functions below have the same signature whether they are used on a constructor function or as a static call.
+Glorify.add( descriptors )
+-----------
+
+* `descriptors`: For each key in `descriptors`, a function is added to the Glorify prototype, allowing it to be
+  used in subsequent `Glorify` calls. This function is passed one argument, the name of the property being accessed
+  through a `get` or `set` call, and is expected to return a valid descriptor. Documentation on valid descriptors
+  may be found at [MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/defineProperty).
+
+The functions below have the same signature whether they are used on a constructor function or as a static call.
 
 properties( definitions )
 --------------------------
