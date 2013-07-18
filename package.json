@@ -1,27 +1,27 @@
 {
-  "name" : "glorify",
-  "description" : "Glorify your classes!",
-  "version" : "0.1.0",
-  "main" : "glorify.js",
-  "keywords" : [
+  "name": "glorify",
+  "description": "Glorify your classes!",
+  "version": "0.2.0",
+  "main": "glorify.js",
+  "keywords": [
     "getter",
     "setter",
     "defineProperty",
     "readonly"
   ],
-  "homepage" : "https://github.com/mrhmouse/glorify.git",
-  "bugs" : "https://github.com/mrhmouse/glorify/issues",
-  "license" : "MIT",
-  "author" : {
-    "name" : "Jordan Brown",
-    "email" : "mrhmouse@gmail.com"
+  "homepage": "https://github.com/mrhmouse/glorify.git",
+  "bugs": "https://github.com/mrhmouse/glorify/issues",
+  "license": "MIT",
+  "author": {
+    "name": "Jordan Brown",
+    "email": "mrhmouse@gmail.com"
   },
-  "files" : [
+  "files": [
     "glorify.js",
     "AUTHORS"
   ],
-  "repository" : {
-    "type" : "git",
-    "url" : "https://github.com/mrhmouse/glorify.git"
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mrhmouse/glorify.git"
   }
 }
