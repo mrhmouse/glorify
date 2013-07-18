@@ -3,6 +3,7 @@ glorify.js: glorify.coffee
 
 publish: glorify.js version-patch
 	npm publish
+	git push
 
 version-minor:
 	npm version minor
