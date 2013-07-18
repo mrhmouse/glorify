@@ -1,7 +1,7 @@
 {
   "name": "glorify",
   "description": "Glorify your classes!",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "main": "glorify.js",
   "keywords": [
     "getter",
