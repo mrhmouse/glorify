@@ -35,11 +35,11 @@ Example in CoffeeScript and NodeJS:
       # You can use the static Glorify method to chain
       # 'properties' or 'readonly' calls in any order
       Glorify( @ )
-      .readonly
-        createdOn: createdOn
-      .properties
-        upperCase:
-          get: -> @name.toUpperCase()
+        .readonly
+          createdOn: createdOn
+        .properties
+          upperCase:
+            get: -> @name.toUpperCase()
 ```
 
 Usage
@@ -83,12 +83,11 @@ As a static call
 ```coffeescript
 Glorify = require 'glorify'
 
-foo = do ->
-  foo = {}
-  name = 'Blah'
-  createdOn = Date.now()
+foo = {}
+name = 'Blah'
+createdOn = Date.now()
   
-  Glorify( @ )
+Glorify( foo )
   .properties
     name:
       get: -> name
@@ -97,8 +96,6 @@ foo = do ->
       get: -> name.toUpperCase()
   .readonly
     createdOn: createdOn
-
-  foo
 ```
 
 Creating your own descriptors
@@ -125,11 +122,11 @@ class Person
     
     # Glorify our person
     Glorify( @ )
-    .readonly
-      guid: guid
-    .database
-      name: name
-      age: age
+      .readonly
+        guid: guid
+      .database
+        name: name
+        age: age
       
 bob = new Person 'Bob', 32
 ```
